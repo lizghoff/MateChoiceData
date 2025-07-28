@@ -1,9 +1,9 @@
+# The purpose of this workspace is to test whether females spent a higher proportion of their time during a trial a bicolor or solid morph male
 library(readxl)
 library(ggplot2)
 library(reshape2)
 library(tidyverse)
 
-# Load data using 
 data <- read_excel("C:/Users/elizg/Desktop/JDC Data/Anap_mate-choice_dataset.xlsx",
                    sheet = "all_data_cleaned")
 
@@ -13,8 +13,8 @@ propf_data <- data[, c("fem_id", "prop_frames_fem_bicolor", "prop_frames_fem_sol
 # Wilcoxon signed-rank test
 # Paired to keep choice within trials consistent
 wilcox.test(
-  x = propf_data$prop_frames_fem_bicolor,
-  y = propf_data$prop_frames_fem_solid,
+  x = propf_data$prop_frames_fem_bicolor, # proportion of frames a female spent with a bicolor male
+  y = propf_data$prop_frames_fem_solid,   # proportion of frames a female spent with a solid male
   paired = TRUE
 )
 
