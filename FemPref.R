@@ -7,10 +7,11 @@ library(tidyverse)
 data <- read_excel("C:/Users/elizg/Desktop/JDC Data/Anap_mate-choice_dataset.xlsx",
                    sheet = "all_data_cleaned")
 
-# Extract columns necessary for analyses
+# Extract columns
 propf_data <- data[, c("fem_id", "prop_frames_fem_bicolor", "prop_frames_fem_solid", "total_frames")]
 
 # Wilcoxon signed-rank test
+# Paired to keep choice within trials consistent
 wilcox.test(
   x = propf_data$prop_frames_fem_bicolor,
   y = propf_data$prop_frames_fem_solid,
@@ -19,7 +20,7 @@ wilcox.test(
 
 
 
-# These graphs are meh, blame copilot for now
+# These graphs are meh, blame copilot for now!
 # Prepare data from Excel-derived proportions
 plot_data <- propf_data |>
   select(fem_id, prop_frames_fem_bicolor, prop_frames_fem_solid) |>
