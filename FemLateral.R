@@ -1,9 +1,10 @@
+# The purpose of this workspace is to test whether females spent a higher proportion of their time during a trial on the left or right side of the arena
+# regardless of male morph
 library(readxl)
 library(ggplot2)
 library(reshape2)
 library(tidyr)
 
-# Load data using 
 data <- read_excel("C:/Users/elizg/Desktop/JDC Data/Anap_mate-choice_dataset.xlsx",
                    sheet = "all_data_cleaned")
 mc_data <- data[, c("fem_id", "prop_frames_fem_bicolor", "prop_frames_fem_solid", "male_order")]
