@@ -1,4 +1,4 @@
-# Load required libraries
+# The purpose of this workspace is to test whether bicolor or solid males dewlaped more often or for a longer proportion of time per trial. 
 library(readxl)
 library(dplyr)
 library(ggplot2)
@@ -45,10 +45,12 @@ ggplot(morph_totals, aes(x = morph, y = displays, fill = morph)) +
   annotate("text", x = 1.5, y = max(morph_totals$displays) + 15,
            label = "*", size = 8, fontface = "bold")
 
-## Normality Test
+# Wilcoxon signed-rank test for within trial differences of male displays
+wilcox.test(male_data$bicolor_disp, male_data$solid_disp, paired = TRUE)
+
+## Normality Test of Duration of Displays
 diff_duration <- bicolor_disp_frames - solid_disp_frames
 shapiro.test(diff_duration)
 
-# Non-normal, so Wilcoxon signed-rank test for within trial differences of male displays
-wilcox.test(male_data$bicolor_disp, male_data$solid_disp, paired = TRUE)
+wilcox.test(male_data$bicolor_disp_frames, male_data$solid_disp_frames, paired=FALSE)
 
