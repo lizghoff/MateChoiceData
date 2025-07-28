@@ -1,8 +1,8 @@
-
+# The purpose of this workspace is to test if females that were tested more than once chose the same morph each time. Additionally, I included tests
+# to see if females selected the same morph that was dominant in their source zone.
 library(dplyr)
 library(readxl)
 
-# Load Excel data
 df <- read_excel("C:/Users/elizg/Desktop/JDC Data/Anap_mate-choice_dataset.xlsx",
                    sheet = "all_data_cleaned")
 
@@ -14,8 +14,8 @@ multi_fem_df <- df %>%
 # Assign morph choice based on female higher proportion of time spent
 multi_fem_df <- multi_fem_df %>%
   mutate(preferred_morph = case_when(
-    prop_frames_fem_solid > prop_frames_fem_bicolor ~ "solid",
-    prop_frames_fem_solid < prop_frames_fem_bicolor ~ "bicolor",
+    prop_frames_fem_solid > prop_frames_fem_bicolor ~ "solid",   # spent more time with the soild morph, define "preferred" as solid
+    prop_frames_fem_solid < prop_frames_fem_bicolor ~ "bicolor", # spent more time with the bicolro morph, define "preferred" as bicolor
     TRUE ~ "tie" 
   ))
 
